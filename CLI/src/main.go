@@ -133,7 +133,8 @@ func main() {
 		repos.Construct(repo_resp, contri_resp, metrics[0], metrics[1], metrics[2], metrics[3], metrics[4])
 
 		if(log_level >= 2){
-			log.Println(urls[i])
+			// log.Println(urls[i]) // should not print to stdout
+			storeLog(log_file, []byte(urls[i]), "url running currently\n", false);
 		}
 	}
 
