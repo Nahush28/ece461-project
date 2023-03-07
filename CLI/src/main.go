@@ -407,17 +407,29 @@ func graphql_func(repo_owner string, repo_name string, token string) []float64 {
 		difference_sum += math.Abs(firstDate.Sub(secondDate).Hours())
 	}
 
-	difference := difference_sum / float64(perc_PR)
+	difference := 0.0
+
+	if(perc_PR != 0){
+		difference = difference_sum / float64(perc_PR)
+	}
 
 	//time it takes to resolve, 7 days is the max, otherwise its a zero
 	if difference > float64(168) {
-		scores[4] = 0
+		scores[4] = 0.0
 	} else {
-		scores[4] = dep.RoundFloat(1-(float64(difference)/float64(168)), 3)
+		if difference == 0{
+			scores[4] = 0.0
+		}else{
+			scores[4] = dep.RoundFloat(1-(float64(difference)/float64(168)), 3)
+		}
 	}
 
 	//closed issues / total issues score of correctness
-	scores[2] = dep.RoundFloat(float64(respData2.Repository.Issues.TotalCount)/(float64(respData1.Repository.Issues.TotalCount)+float64(respData2.Repository.Issues.TotalCount)), 3)
+	if respData1.Repository.Issues.TotalCount == 0{
+		scores[2] = 1
+	} else{
+		scores[2] = dep.RoundFloat(float64(respData2.Repository.Issues.TotalCount)/(float64(respData1.Repository.Issues.TotalCount)+float64(respData2.Repository.Issues.TotalCount)), 3)
+	}
 
 	//rampup... has readme
 	if respData1.Repository.Upcase.Text != "" {

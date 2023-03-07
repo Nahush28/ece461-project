@@ -42,6 +42,7 @@ type Repos []Repo
 
 func (r *Repos) Construct(resp *http.Response, resp1 *http.Response, LS float64, RU float64, C float64, totalCommits float64, RM float64) {
 
+
 	var repo Repo
 	json.NewDecoder(resp.Body).Decode(&repo) //decodes response and stores info in repo struct
 	//fmt.Println(repo.License.Name)
@@ -56,8 +57,19 @@ func (r *Repos) Construct(resp *http.Response, resp1 *http.Response, LS float64,
 	if (cont == nil){
 		log.Fatal("cont struct empty, check http response")
 	}
-
-	new_repo := Repo{ //setting values in repo struct, mostly hard coded for now.
+	new_repo := Repo{};
+	if totalCommits == 0 {
+		new_repo = Repo{ //setting values in repo struct, mostly hard coded for now.
+		URL:                  repo.URL,
+		RAMP_UP_SCORE:             0,
+		CORRECTNESS_SCORE:          0,
+		BUS_FACTOR_SCORE:            0,
+		RESPONSIVE_MAINTAINER_SCORE: 0,
+		LICENSE_SCORE:         RoundFloat(LS, 1),
+		// License:              repo.License,
+		}
+	}else{
+		new_repo = Repo{ //setting values in repo struct, mostly hard coded for now.
 		URL:                  repo.URL,
 		RAMP_UP_SCORE:              RoundFloat(RU, 1),
 		CORRECTNESS_SCORE:          RoundFloat(C, 1),
@@ -65,6 +77,7 @@ func (r *Repos) Construct(resp *http.Response, resp1 *http.Response, LS float64,
 		RESPONSIVE_MAINTAINER_SCORE: RoundFloat(RM, 1),
 		LICENSE_SCORE:         RoundFloat(LS, 1),
 		// License:              repo.License,
+		}
 	}
 
 	// var LicenseComp float64
@@ -140,6 +153,7 @@ func (r *Repos) Print() error {
 	// 	fmt.Printf("%.3f	%.3f	%.3f	%.3f	%.3f	%.3f\n", repo.NetScore, repo.RampUp, repo.Correctness, repo.BusFactor, repo.ResponsiveMaintainer, repo.LicenseScore)
 	// }
 	for _, repo := range *r {
+
 		data, err := json.Marshal(repo)
 		if err != nil {
 			return err
