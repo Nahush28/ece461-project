@@ -14,4 +14,4 @@ BusFactor which measures the amount of risk in the project maintainence by not s
 Responsive Maintainence which rates the project on how much maintainence the project receives
 License compatability which rates the projects compatability with LGPLv2.1 license
 
-Finally the Net score of a repository is calculated using the following formula Net Score = (license compatibility score)* (correctness score + 3* responsiveness score + Bus Factor + 2 * low-ramp up time) / 7
+Finally the Net score of a repository is calculated using the following formula Net Score = (license compatibility score + correctness score + 3* responsiveness score + Bus Factor + 2 * low-ramp up time) / 8.0
