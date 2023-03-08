@@ -304,7 +304,7 @@ func graphql_func(repo_owner string, repo_name string, token string) []float64 {
 					text
 				}
 			}
-			downcase: object(expression: "HEAD:README.md") {
+			downcase: object(expression: "HEAD:readme.md") {
 				... on Blob {
 					text
 				}
@@ -441,8 +441,7 @@ func graphql_func(repo_owner string, repo_name string, token string) []float64 {
 		} else{
 			scores[1] = rm_len / 5000
 		}
-
-		res1, e := regexp.MatchString(`MIT [lL]icense|[lL]icense MIT|\[MIT\]\(LICENSE\)|\[MIT\]\(\.\/LICENSE\)|lgpl-2.1|License of zlib| zlib license|Berkeley Database License|Sleepycat|Boost Software License|CeCILL version 2|Clarified Artistic License|
+		res1, e := regexp.MatchString(`MIT|MIT [lL]icense|[lL]icense MIT|\[MIT\]\(LICENSE\)|\[MIT\]\(\.\/LICENSE\)|lgpl-2.1|License of zlib| zlib license|Berkeley Database License|Sleepycat|Boost Software License|CeCILL version 2|Clarified Artistic License|
 		Cryptix General License|EU DataGrid Software License|Eiffel Forum License, version 2|Expat License|Intel Open Source License|License of Guile|
 		License of Netscape Javascript|License of Perl|Python 1.6a2|Python 2.0.1 license|Python 2.1.1 license|Python [2-9].[1-9].[1-9]|Vim version [6-9].[2-9]|
 		iMatix Standard Function Library|License of the run-time units of the GNU Ada compiler|Modified BSD license|OpenLDAP License.*version 2.7|Public Domain|
@@ -464,7 +463,7 @@ func graphql_func(repo_owner string, repo_name string, token string) []float64 {
 			scores[1] = rm_len / 5000
 		}
 
-		res1, e := regexp.MatchString(`MIT [lL]icense|[lL]icense MIT|\[MIT\]\(LICENSE\)|\[MIT\]\(\.\/LICENSE\)|lgpl-2.1|License of zlib| zlib license|Berkeley Database License|Sleepycat|Boost Software License|CeCILL version 2|Clarified Artistic License|
+		res1, e := regexp.MatchString(`MIT |MIT [lL]icense|[lL]icense MIT|\[MIT\]\(LICENSE\)|\[MIT\]\(\.\/LICENSE\)|lgpl-2.1|License of zlib| zlib license|Berkeley Database License|Sleepycat|Boost Software License|CeCILL version 2|Clarified Artistic License|
 		Cryptix General License|EU DataGrid Software License|Eiffel Forum License, version 2|Expat License|Intel Open Source License|License of Guile|
 		License of Netscape Javascript|License of Perl|Python 1.6a2|Python 2.0.1 license|Python 2.1.1 license|Python [2-9].[1-9].[1-9]|Vim version [6-9].[2-9]|
 		iMatix Standard Function Library|License of the run-time units of the GNU Ada compiler|Modified BSD license|OpenLDAP License.*version 2.7|Public Domain|
@@ -487,7 +486,7 @@ func graphql_func(repo_owner string, repo_name string, token string) []float64 {
 			scores[1] = rm_len / 5000
 		}
 
-		res1, e := regexp.MatchString(`MIT [lL]icense|[lL]icense MIT|\[MIT\]\(LICENSE\)|\[MIT\]\(\.\/LICENSE\)|lgpl-2.1|License of zlib| zlib license|Berkeley Database License|Sleepycat|Boost Software License|CeCILL version 2|Clarified Artistic License|
+		res1, e := regexp.MatchString(`MIT |MIT [lL]icense|[lL]icense MIT|\[MIT\]\(LICENSE\)|\[MIT\]\(\.\/LICENSE\)|lgpl-2.1|License of zlib| zlib license|Berkeley Database License|Sleepycat|Boost Software License|CeCILL version 2|Clarified Artistic License|
 		Cryptix General License|EU DataGrid Software License|Eiffel Forum License, version 2|Expat License|Intel Open Source License|License of Guile|
 		License of Netscape Javascript|License of Perl|Python 1.6a2|Python 2.0.1 license|Python 2.1.1 license|Python [2-9].[1-9].[1-9]|Vim version [6-9].[2-9]|
 		iMatix Standard Function Library|License of the run-time units of the GNU Ada compiler|Modified BSD license|OpenLDAP License.*version 2.7|Public Domain|
@@ -509,7 +508,7 @@ func graphql_func(repo_owner string, repo_name string, token string) []float64 {
 			scores[1] = rm_len / 5000
 		}
 
-		res1, e := regexp.MatchString(`MIT [lL]icense|[lL]icense MIT|\[MIT\]\(LICENSE\)|\[MIT\]\(\.\/LICENSE\)|lgpl-2.1|License of zlib| zlib license|Berkeley Database License|Sleepycat|Boost Software License|CeCILL version 2|Clarified Artistic License|
+		res1, e := regexp.MatchString(`MIT |MIT [lL]icense|[lL]icense MIT|\[MIT\]\(LICENSE\)|\[MIT\]\(\.\/LICENSE\)|lgpl-2.1|License of zlib| zlib license|Berkeley Database License|Sleepycat|Boost Software License|CeCILL version 2|Clarified Artistic License|
 Cryptix General License|EU DataGrid Software License|Eiffel Forum License, version 2|Expat License|Intel Open Source License|License of Guile|
 License of Netscape Javascript|License of Perl|Python 1.6a2|Python 2.0.1 license|Python 2.1.1 license|Python [2-9].[1-9].[1-9]|Vim version [6-9].[2-9]|
 iMatix Standard Function Library|License of the run-time units of the GNU Ada compiler|Modified BSD license|OpenLDAP License.*version 2.7|Public Domain|

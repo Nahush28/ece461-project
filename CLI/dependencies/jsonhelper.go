@@ -86,7 +86,7 @@ func (r *Repos) Construct(resp *http.Response, resp1 *http.Response, LS float64,
 	// } else {
 	// 	LicenseComp = 0
 	// }
-	new_repo.NET_SCORE = RoundFloat((new_repo.LICENSE_SCORE*(new_repo.CORRECTNESS_SCORE+3*new_repo.RESPONSIVE_MAINTAINER_SCORE+new_repo.BUS_FACTOR_SCORE+2*new_repo.RAMP_UP_SCORE))/7.0, 1)
+	new_repo.NET_SCORE = RoundFloat((new_repo.LICENSE_SCORE+new_repo.CORRECTNESS_SCORE+3*new_repo.RESPONSIVE_MAINTAINER_SCORE+new_repo.BUS_FACTOR_SCORE+2*new_repo.RAMP_UP_SCORE)/8.0, 1)
 	// new_repo.LicenseScore = LS
 	*r = append(*r, new_repo)
 }
